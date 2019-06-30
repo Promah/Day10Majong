@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".MenuFragment"
+            android:id="@+id/gameMenu">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerVertical="true">
+        <TextView
+                android:id="@+id/textViewContinueGame"
+                android:text="Continue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:visibility="gone"
+        />
+
+        <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/textViewStartNewGame"
+                android:text="Start new game"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true">
+        <TextView
+                android:text="Highest Score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_weight="1"/>
+        <TextView
+                android:text="0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textViewHighestScore" android:layout_weight="1"
+                android:textAlignment="textEnd"/>
+    </LinearLayout>
+
+</RelativeLayout>
