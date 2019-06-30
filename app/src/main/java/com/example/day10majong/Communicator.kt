@@ -16,24 +16,6 @@ class Communicator : ViewModel(){
         return mainLogic
     }
 
-//    val _isGameStarted = MutableLiveData<Boolean>()
-//    fun isGameStarted() = mainLogic?.isGameFinished
-//    fun getGameState(): LiveData<Boolean> = isGameStarted
-//    fun setGameState(isStarted:Boolean){
-//        isGameStarted.postValue(isStarted)
-//    }
-
-//    val logic = MutableLiveData<MajongLogic>()
-//    fun getLocic(w:Int, h:Int){
-//        val _logic = MajongLogic.getInstance(w,h)
-//        logic.postValue(_logic)
-//    }
-//    fun renewLocic(w:Int, h:Int){
-//        MajongLogic.deleteInstance()
-//        val _logic = MajongLogic.getInstance(w,h)
-//        logic.postValue(_logic)
-//    }
-
     private val highestScores = MutableLiveData<Int>()
     fun getHighestScores():LiveData<Int> = highestScores
     fun setHighestScores(scores: Int){

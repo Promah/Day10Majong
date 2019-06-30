@@ -40,10 +40,27 @@ class MenuFragment : Fragment() {
         animatedBG.setEnterFadeDuration(animationBGChangeDuration)
         animatedBG.setExitFadeDuration(animationBGChangeDuration)
 
-        val gradientDrawable1 = GradientDrawable(GradientDrawable.Orientation.TR_BL, intArrayOf(resources.getColor(R.color.mtrl_textinput_default_box_stroke_color), resources.getColor(R.color.button_material_dark)))
-        val gradientDrawable2 = GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, intArrayOf(resources.getColor(R.color.mtrl_btn_transparent_bg_color), resources.getColor(R.color.mtrl_textinput_default_box_stroke_color)))
-        val gradientDrawable3 = GradientDrawable(GradientDrawable.Orientation.BR_TL, intArrayOf(resources.getColor(R.color.button_material_dark), resources.getColor(R.color.mtrl_textinput_default_box_stroke_color)))
-
+        val gradientDrawable1 = GradientDrawable(
+            GradientDrawable.Orientation.TR_BL,
+            intArrayOf(
+                resources.getColor(R.color.mtrl_textinput_default_box_stroke_color),
+                resources.getColor(R.color.button_material_dark)
+            )
+        )
+        val gradientDrawable2 = GradientDrawable(
+            GradientDrawable.Orientation.TOP_BOTTOM,
+            intArrayOf(
+                resources.getColor(R.color.mtrl_btn_transparent_bg_color),
+                resources.getColor(R.color.mtrl_textinput_default_box_stroke_color)
+            )
+        )
+        val gradientDrawable3 = GradientDrawable(
+            GradientDrawable.Orientation.BR_TL,
+            intArrayOf(
+                resources.getColor(R.color.button_material_dark),
+                resources.getColor(R.color.mtrl_textinput_default_box_stroke_color)
+            )
+        )
 
         animatedBG.addFrame(gradientDrawable1, animationBGChangeDuration)
         animatedBG.addFrame(gradientDrawable2, animationBGChangeDuration)
@@ -62,8 +79,6 @@ class MenuFragment : Fragment() {
         animatorTextViewNewGame.setFloatValues(0f, -4f, 4f, 0f)
         animatorTextViewNewGame.repeatCount = ObjectAnimator.INFINITE
         animatorTextViewNewGame.start()
-
-
 
         val animatorTextViewNewGame2 = ObjectAnimator()
         animatorTextViewNewGame2.target = v.textViewStartNewGame
@@ -87,7 +102,7 @@ class MenuFragment : Fragment() {
         animatorTextViewContinueGame2.target = v.textViewContinueGame
         animatorTextViewContinueGame2.setProperty(TextView.SCALE_X)
         animatorTextViewContinueGame2.duration = 3000
-        animatorTextViewContinueGame2.setFloatValues(1f,0.95f,1.05f, 1f)
+        animatorTextViewContinueGame2.setFloatValues(1f, 0.95f, 1.05f, 1f)
         animatorTextViewContinueGame2.repeatCount = ObjectAnimator.INFINITE
         animatorTextViewContinueGame2.start()
 
@@ -95,6 +110,7 @@ class MenuFragment : Fragment() {
         model = ViewModelProviders.of(activity!!).get(Communicator::class.java)
         val logic = model!!.getLogic()
 
+        //checking is any game in progress
         logic.isGameStarted.observe(viewLifecycleOwner, Observer {
             if (it == true)
                 v.textViewContinueGame.visibility = TextView.VISIBLE
@@ -102,6 +118,7 @@ class MenuFragment : Fragment() {
                 v.textViewContinueGame.visibility = TextView.GONE
         })
 
+        //set HighestScores on game finish
         model?.getHighestScores()?.observe(viewLifecycleOwner, Observer {
             if ((it ?: 0) > v.textViewHighestScore.text.toString().toInt())
                 v.textViewHighestScore.text = it.toString()
@@ -112,7 +129,6 @@ class MenuFragment : Fragment() {
             findNavController().navigate(R.id.action_menuFragment_to_gameFragment)
         }
         v.findViewById<TextView>(R.id.textViewContinueGame).setOnClickListener {
-
             model?.getLogic()
             findNavController().navigate(R.id.action_menuFragment_to_gameFragment)
         }
